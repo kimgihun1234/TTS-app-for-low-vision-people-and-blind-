@@ -5,6 +5,7 @@ import 'Previewpage.dart';
 import 'dart:async';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:native_shutter_sound/native_shutter_sound.dart';
 
 class CameraPage extends StatefulWidget {
   const CameraPage({Key? key, required this.cameras}) : super(key: key);
@@ -55,12 +56,14 @@ class _CameraPageState extends State<CameraPage> {
       return null;
     }
     try {
-      await _cameraController.setFlashMode(FlashMode.off);
+      await _cameraController.setFlashMode(FlashMode.auto);
       await _cameraController.setFocusMode(FocusMode.locked);
       await _cameraController.setExposureMode(ExposureMode.locked);
+      NativeShutterSound.play();
       XFile picture = await _cameraController.takePicture();
       await _cameraController.setFocusMode(FocusMode.auto);
       await _cameraController.setExposureMode(ExposureMode.auto);
+      await _cameraController.setFlashMode(FlashMode.off);
       Navigator.push(
           context,
           MaterialPageRoute(
