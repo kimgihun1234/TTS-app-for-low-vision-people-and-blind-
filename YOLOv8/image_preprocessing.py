@@ -1,5 +1,5 @@
-# 촬영한 image set을 화소를 조금 낮춰서 저장 후, 순서를 섞어서 다시 저장.
-# 제가 초기 데이터들은 화소 낮추는 작업을 안했습니다. image 이름에 add_1 붙은 애들부터는 화소가 낮습니다.
+# 촬영한 image set을 화소를 조금 낮춰서 저장 후, 순서를 섞어서 다시 저장. 
+# 섞인 이미지들을 원하는 비율에 맞춰 잘라서 datasets/ 폴더 안에 넣으면 된다.
 import random
 from PIL import Image
 import os
